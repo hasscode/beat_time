@@ -3,6 +3,7 @@ import 'package:beat_time_app/core/styles/app_colors.dart';
 import 'package:beat_time_app/features/onboarding/presentation/screens/app_onboarding.dart';
 import 'package:beat_time_app/features/splash/presentation/widgets/splash_screen_body_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -18,10 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
 
     Future.delayed(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => const AppOnboarding()),
-      );
+  context.go('/onboarding');
     });
   }
 

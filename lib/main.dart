@@ -1,3 +1,4 @@
+import 'package:beat_time_app/core/routing/app_router.dart';
 import 'package:beat_time_app/features/auth/presentation/screens/sign_in_screen.dart';
 import 'package:beat_time_app/features/splash/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -9,10 +10,10 @@ import 'core/styles/app_colors.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // خلي الـ app edge to edge
+
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
-  // غير ألوان الـ status bar والـ navigation bar
+
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
@@ -40,19 +41,20 @@ class BeatTime extends StatelessWidget {
       designSize: const Size(390, 844),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp(
+      child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(  // ✅ ضيف theme عشان يطبق على كل الـ app
+        theme: ThemeData(
           scaffoldBackgroundColor: AppColors.bgDark,
           appBarTheme: const AppBarTheme(
             systemOverlayStyle: SystemUiOverlayStyle(
               statusBarColor: Colors.transparent,
               statusBarIconBrightness: Brightness.light,
-              statusBarBrightness: Brightness.dark,
+              statusBarBrightness: Brightness.light,
+              systemNavigationBarColor: AppColors.bgDark
             ),
           ),
         ),
-        home: const SignInScreen(),
+        routerConfig: AppRouter.router,
       ),
     );
   }
