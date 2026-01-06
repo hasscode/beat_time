@@ -13,7 +13,7 @@ class SplashScreenBodyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  Column(
       children: [
-        const Spacer(flex: 1),
+        const Spacer(flex: 1,),
 
         // LOGO CONTAINER
         FadeIn(
@@ -75,7 +75,7 @@ class SplashScreenBodyWidget extends StatelessWidget {
           ),
         ),
 
-         SizedBox(height: 10.h),
+         SizedBox(height: 30.h),
       ],
     );
   }

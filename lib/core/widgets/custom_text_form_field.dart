@@ -11,10 +11,12 @@ class CustomTextFormField extends StatelessWidget {
     required this.hintText,
     this.isPassword = false,
     this.onTogglePassword,
+   required this.titleExist,
   });
 
   final TextEditingController textEditingController;
   final bool obscureText;
+  final bool titleExist;
   final String title;
   final String hintText;
   final bool isPassword;
@@ -26,10 +28,10 @@ class CustomTextFormField extends StatelessWidget {
       children: [
         Align(
           alignment: Alignment.topLeft,
-          child: Text(
+          child: titleExist? Text(
             title,
             style: AppTextStyles.interSemiBold.copyWith(color: Colors.white)
-          ),
+          ):SizedBox.shrink(),
         ),
         SizedBox(height: 12.h),
         TextFormField(

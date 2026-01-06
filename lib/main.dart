@@ -1,6 +1,4 @@
 import 'package:beat_time_app/core/routing/app_router.dart';
-import 'package:beat_time_app/features/auth/presentation/screens/sign_in_screen.dart';
-import 'package:beat_time_app/features/splash/presentation/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

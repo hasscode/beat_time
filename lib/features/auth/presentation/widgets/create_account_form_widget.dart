@@ -8,40 +8,42 @@ import '../../../../core/widgets/custom_button_widget.dart';
 import '../../../../core/widgets/custom_text_button_widget.dart';
 import '../../../../core/widgets/custom_text_form_field.dart';
 
-class SignInFormWidget extends StatefulWidget {
-  const SignInFormWidget({super.key});
+class CreateAccountFormWidget extends StatefulWidget {
+  const CreateAccountFormWidget({super.key});
 
   @override
-  State<SignInFormWidget> createState() => _SignInFormWidgetState();
+  State<CreateAccountFormWidget> createState() => _CreateAccountFormWidgetState();
 }
 
-class _SignInFormWidgetState extends State<SignInFormWidget> {
-  bool obscurePassword = true;
+class _CreateAccountFormWidgetState extends State<CreateAccountFormWidget> {
 
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
+  late final TextEditingController confirmPasswordController;
 
   @override
   void initState() {
     super.initState();
     emailController = TextEditingController();
     passwordController = TextEditingController();
+    confirmPasswordController = TextEditingController();
   }
+  bool obscurePassword = true;
   @override
   Widget build(BuildContext context) {
     return Form(
       child: Column(
         children: [
           CustomTextFormField(
-            titleExist: true,
+            titleExist: false,
             textEditingController: emailController,
             obscureText: false,
             title: 'Email',
-            hintText: 'Enter Your Email',
+            hintText: 'Email Address',
           ),
           SizedBox(height: 30.h),
           CustomTextFormField(
-            titleExist: true,
+            titleExist: false,
             onTogglePassword: () {
               setState(() {
                 obscurePassword = !obscurePassword;
@@ -50,22 +52,27 @@ class _SignInFormWidgetState extends State<SignInFormWidget> {
             textEditingController: passwordController,
             obscureText: obscurePassword,
             title: 'Password',
-            hintText: 'Enter Your Password',
+            hintText: 'Password (min. 8 chars)',
             isPassword: true,
           ),
-          Align(
-            alignment: AlignmentGeometry.topRight,
-            child: CustomTextButtonWidget(
-              textColor: AppColors.primaryBlue,
-              title: 'Forgot Password?',
-              onPressed: () {},
-              fontWeight: FontWeight.w400,
-            ),
+          SizedBox(height: 30.h),
+          CustomTextFormField(
+            titleExist: false,
+            onTogglePassword: () {
+              setState(() {
+                obscurePassword = !obscurePassword;
+              });
+            },
+            textEditingController: confirmPasswordController,
+            obscureText: obscurePassword,
+            title: 'Password',
+            hintText: 'Confirm Password',
+            isPassword: true,
           ),
           SizedBox(height: 30.h),
           CustomButtonWidget(
             textColor: Colors.white,
-            title: 'Sign In',
+            title: 'Create Account',
             onPressed: () {},
             backgroundColor: AppColors.primaryBlue,
             width: 400.w,
@@ -75,10 +82,10 @@ class _SignInFormWidgetState extends State<SignInFormWidget> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("Don't have an account? ",style: AppTextStyles.interRegular12.copyWith(fontSize: 14.sp),),
-              CustomTextButtonWidget(textColor: AppColors.primaryBlue, title: 'Sign Up', onPressed: (){
-                print('pressed sign up');
-                context.go('/createAccount');
+              Text("Already have an account? ",style: AppTextStyles.interRegular12.copyWith(fontSize: 14.sp),),
+              CustomTextButtonWidget(textColor: AppColors.primaryBlue, title: 'Log In', onPressed: (){
+                context.go('/signIn');
+
               }, fontWeight: FontWeight.w400)
             ],
           )
